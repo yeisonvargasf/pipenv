@@ -476,6 +476,7 @@ class Project(object):
 
     @property
     def pipfile_location(self):
+        # type: () -> str
         if PIPENV_PIPFILE:
             return PIPENV_PIPFILE
 
@@ -483,7 +484,7 @@ class Project(object):
             try:
                 loc = pipfile.Pipfile.find(max_depth=PIPENV_MAX_DEPTH)
             except RuntimeError:
-                loc = None
+                loc = "Pipfile"
             self._pipfile_location = _normalized(loc)
         return self._pipfile_location
 
